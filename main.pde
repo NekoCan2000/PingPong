@@ -23,7 +23,7 @@ void setup() {
     @Override
       public int calc() {
       float dire = ball.pos.x - this.pos.x;
-      if (abs(dire) > player.speed) 
+      if (abs(dire) > this.speed) 
         return (int)dire;
       return 0;
     }
