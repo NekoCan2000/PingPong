@@ -19,9 +19,9 @@ class GM {
     }
     );
   }
-  void goal(int player) {
-    playerPoint += 1-player;
-    cpuPoint += player;
+  void goal(int bottom) {
+    playerPoint += 1-bottom;
+    cpuPoint += bottom;
     status = Status.goal;
   }
 
@@ -55,6 +55,7 @@ class GM {
       fill(255);
       if (timer >= 2) {
         text("continue", width/2, conY);
+        //continue
         if (mousePressed) {
           timer = 0;
           status = Status.start;
