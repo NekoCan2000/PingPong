@@ -21,10 +21,14 @@ class Ball extends Obj {
     float b = pos.y -a * pos.x;//y=ax+[b]
     //stroke(255);
     //line(0,b,width,a*width+b);//Show direction of movement
-    pos.add(dire);
-    if (pos.x + size >= width || pos.x - size <= 0) {
-      direction.x *=-1;
+    float distFromCenter=width/2-size-abs(width/2-(pos.x+dire.x));
+    
+    if(distFromCenter<0){
+      direction.x *= -1;
+    }else{
+      pos.add(dire);
     }
+    
     if (pos.y +size >= height) {
       for(Event e:goalInBottom)
         e.invoke();
