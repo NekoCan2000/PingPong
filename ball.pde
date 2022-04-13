@@ -21,9 +21,12 @@ class Ball extends Obj {
     float b = pos.y -a * pos.x;//y=ax+[b]
     //stroke(255);
     //line(0,b,width,a*width+b);//Show direction of movement
-    float distFromCenter=width/2-size-abs(width/2-(pos.x+dire.x));
-    
-    if(distFromCenter<0){
+    float movePos=pos.x+dire.x-width/2;
+    if(abs(movePos)>=width/2-size){
+      float alpha = sign(direction.x);
+      float wall = alpha*width/2-alpha*size;//reflection pos
+      pos.x = width/2 + wall-(movePos-wall);
+      pos.y += dire.y;
       direction.x *= -1;
     }else{
       pos.add(dire);
