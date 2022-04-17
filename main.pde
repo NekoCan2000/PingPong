@@ -9,7 +9,7 @@ void setup() {
   textSize(fontSize);
   textAlign(CENTER);
   rectMode(CENTER);
-  ball = new Ball(new PVector(width/2, height/2), 20, color(255));
+  
   player = new Player(new PVector(width/2, height*0.9), 50, 10, color(0, 255, 0)) {
     @Override
       public int calc() {
@@ -28,6 +28,8 @@ void setup() {
       return 0;
     }
   };
+  Player[] ps = {player,cpu};
+  ball = new Ball(new PVector(width/2, height/2), 20, color(255),ps);
   gm = new GM(ball);
 }
 
@@ -66,8 +68,6 @@ void draw() {
     player.update();
     cpu.update();
 
-    ball.collision(player);
-    ball.collision(cpu);
     break;
   }
 
